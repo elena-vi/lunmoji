@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+
+# <img src="public/logo192.png" width="40" style="margin-top: -8px; margin-bottom: -12px"/> Lunmoji 
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
