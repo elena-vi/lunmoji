@@ -17,6 +17,16 @@
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
 image: node:latest
+default:
+  cache: &global_cache
+    key: $CI_COMMIT_REF_SLUG
+    files:
+      - package-lock.json
+    paths:
+      - node_modules/
+      - public/
+      - build/
+    policy: pull-push
 
 stages:          # List of stages for jobs, and their order of execution
   - build
