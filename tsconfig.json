@@ -1,4 +1,8 @@
 {
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "exclude": [
+    "../packages"
+  ],
   "compilerOptions": {
     "target": "es5",
     "lib": [
