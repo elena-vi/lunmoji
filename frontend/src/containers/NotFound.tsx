@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "../logo.svg";
 
-function App() {
+export default function NotFound() {
   return (
-    <div className="App">
+    <>
+
       <header className="App-header">
+        <h1 className="mb-4">Sorry, page not found!</h1>
+
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Luna emojis
-        </p>
         <a
-          className="App-link"
+          className="App-link mb-4"
           href="lunmoji.zip"
           rel="noopener noreferrer"
         >
           Download here
         </a>
       </header>
-    </div>
+    </>
   );
 }
-
-export default App;
