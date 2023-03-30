@@ -24,24 +24,29 @@ default:
       - node_modules/
       - public/
       - build/
+      - frontend/
     policy: pull-push
 
-stages:          # List of stages for jobs, and their order of execution
-  - test #  - build
+stages:
+  - build # List of stages for jobs, and their order of execution
+  - test
   - deploy
 
 build-job:       # This job runs in the build stage, which runs first.
-  # stage: build
+  stage: build
   script:
     - echo "Installing deps..."
     - yarn install
     - echo "Compiling the code..."
-    - yarn build-react
+    - yarn build-sst
+    - cd frontend/
+    - yarn install
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
-    - echo "Running unit tests... This will take about 60 seconds."
+    - echo "Running unit tests..."
+    - cd frontend/
     - yarn test
 
 lint-test-job:   # This job also runs in the test stage.
@@ -55,7 +60,5 @@ deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   environment: production
   script:
-    - echo "Building sst"
-    - yarn build-sst
     - echo "Deploying application..."
     - yarn deploy
