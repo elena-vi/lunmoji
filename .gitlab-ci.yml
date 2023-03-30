@@ -24,7 +24,6 @@ default:
       - node_modules/
       - public/
       - build/
-      - frontend/
     policy: pull-push
 
 stages:
@@ -39,14 +38,13 @@ build-job:       # This job runs in the build stage, which runs first.
     - yarn install
     - echo "Compiling the code..."
     - yarn build-sst
-    - cd frontend/
-    - yarn install
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
     - echo "Running unit tests..."
     - cd frontend/
+    - yarn install
     - yarn test
 
 lint-test-job:   # This job also runs in the test stage.
